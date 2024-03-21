@@ -1,0 +1,46 @@
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <link rel="stylesheet" href="{% static 'styles/styles2.css' %}">
+</head>
+
+<body>
+
+
+    <div class="student-info">
+        <h1>Oscar Enrique Blanco Gil</h1>
+        <p><strong>Grade:</strong> 6° INFORMÁTICA</p>
+        <p><strong>Academic Year:</strong> A-2023-2024</p>
+        <p><strong>Institution:</strong> UNIDAD EDUCATIVA PRIVADA INSTITUTO TÉCNIC</p>
+        <p><strong>Teacher:</strong> Granados Oscar Enrique</p>
+    </div>
+
+    <div class="grades-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject</th>
+                    <th>Accumulated Grade</th>
+                    <th>Evaluated Percentage</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Grades will be inserted here by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <script src="{% static 'js/script2.js' %}"></script>
+</body>
+
+</html>
+
+{% endblock %}

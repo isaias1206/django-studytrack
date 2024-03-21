@@ -1,0 +1,93 @@
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information</title>
+    <link rel="stylesheet" href="{% static 'styles/styles3.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" 
+</head>
+<body>
+    {% include 'snippets/messages.html' %}
+    {% include 'snippets/navbar.html' %}
+    <nav>
+        <ul class="menu">
+            <li><a href="{% url 'Notas:notas' %}">Calificaciones</a></li>
+        </ul>
+    </nav>
+
+<div class="container" id="content"></div>
+
+    <script>
+        function loadContent(section) {
+            let content;
+
+            switch (section) {
+                case 'evaluaciones':
+                    content = `
+                        <h3 style="text-align: center;"><strong>5 AÑO ASIGNATURA FUNDAMENTOS DE ECONOMÍA</strong></h3>
+                        <p>PROFESOR JOHNNY OROPEZA</p>
+                        <p>PRUEBA DE REVISION 2 FORMA</p>
+                        <p>Estimados estudiantes para el proceso de revisión del dia de hoy, deberán realizar las siguientes actividades</p>
+                        <ol>
+                            <li>Deben realizar 5 conceptos de economia y citar el autor, luego de esto deben plasmar su propio concepto de lo que es economia y aplicat dicho analisis a la economia Veneziana (valor2 puntos)</li>
+                            <li>Definir que son empresas y su clasificación da 5 ejemplos (valor 2 puntos)</li>
+                            <li>Definir que es el mercado y su clasificación da 5 ejemplos (valor 2 puntos)</li>
+                            <li>Definir que es la oferta y la demanda y su relación con el mercado (valor 2 puntos)</li>
+                            <li>Definir que es la producción y su clasificación da 5 ejemplos (valor 2 puntos)</li>
+                        </ol>
+                        <p>La duración de la prueba es de 1 hora y 30 minutos, deberán enviar sus respuestas al correo johny.oropeza@unitecnica.edu.ve antes de las 12:00 pm del dia de hoy</p>
+                    `;
+                    break;
+                case 'preferencias':
+                    content = 'Preferencias content goes here.';
+                    break;
+                case 'calendario':
+                    content = 'Calendario content goes here.';
+                    break;
+                case 'inscripciones':
+                    content = 'Inscripciones content goes here.';
+                    break;
+                case 'archivos':
+                    content = 'Archivos content goes here.';
+                    break;
+                case 'eventos':
+                    content = 'Eventos content goes here.';
+                    break;
+                default:
+                    content = 'Default content goes here.';
+            }
+
+            document.getElementById('content').innerHTML = content;
+        }
+
+        loadContent('evaluaciones');
+
+        const navLinks = document.querySelectorAll('nav ul li a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const section= link.getAttribute('href').substring(1);
+                loadContent(section);
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('mobile-menu');
+            const menu = document.querySelector('.menu');
+
+            menuToggle.addEventListener('click', function() {
+                menu.classList.toggle('active');
+            });
+        });
+
+    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+</body>
+</html>
+
+{% endblock %}
